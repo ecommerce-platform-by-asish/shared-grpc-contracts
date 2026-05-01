@@ -72,9 +72,7 @@ tasks.processResources {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 
-tasks.clean {
-    mustRunAfter("spotlessApply")
-}
+
 
 // Ensure proto files are included in the JAR
 sourceSets {
