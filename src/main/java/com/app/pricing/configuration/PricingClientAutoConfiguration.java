@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Automatically configures the gRPC client for the Pricing Service.
- * Enabled only if 'spring.grpc.client.channels.pricingService.address' is present.
+ * Automatically configures the gRPC client for the Pricing Service. Enabled only if
+ * 'spring.grpc.client.channels.pricingService.address' is present.
  */
 @Configuration
 @ConditionalOnProperty("spring.grpc.client.channels.pricingService.address")
@@ -25,9 +25,7 @@ public class PricingClientAutoConfiguration {
     String host = address.split(":")[0];
     int port = Integer.parseInt(address.split(":")[1]);
 
-    ManagedChannel channel = ManagedChannelBuilder.forAddress(host, port)
-        .usePlaintext()
-        .build();
+    ManagedChannel channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
 
     return PricingServiceGrpc.newBlockingStub(channel);
   }
